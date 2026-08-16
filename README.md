@@ -18,3 +18,14 @@ Thu Aug 20
 + Aahna: Incorporate mentor feedback on scope. Finalize the  state-prep gadget instruction sequence; write the transversal CNOT and transversal H as instruction sequences too (these are simple — transversal means “apply the physical gate to every corresponding physical qubit pair,” per §II-B).
 + Chloe: Implement state_prep_D4() in code, using Aahna’s derivation, running on top of PhysicalArray. Get a single  logical qubit prepared and verified (check stabilizers measure +1) as your first working milestone.
 + Hyunmin: Add the adder circuit (3-bit ripple carry) and a small QFT circuit to the benchmark set, same simple IR as Toffoli.
+
+Fri Aug 21
++ Aahna: Derive the automorphism-based logical SWAP and logical CNOT (Fig. 6a-b) as concrete physical-qubit-index swaps for  (this is literally “swap physical qubit 1 and 3” type logic per §II-B — work out the exact indices).
++ Chloe: Implement transversal_cnot() and transversal_h(). Implement automorphism_swap() and automorphism_cnot() using Aahna’s derived indices.
++ Hyunmin: Write circuit_to_gadget_sequence() — the very first piece of the “Logical-to-Gadget Transformation” phase — that takes a circuit in your IR and, for now, just handles Clifford gates (H, CNOT) by calling the gadgets Chloe is building.
+
+Sat Aug 22
++ All (30 min sync): Confirm state prep + transversal CNOT/H + automorphism swap/CNOT are all working and tested on their own before building addressability on top.
++ Aahna: Work out the inter-register batched CNOT and the hierarchical-addressing binary-search construction (Fig. 7a-b) for  — since  only encodes 2 logical qubits per register, this is your simplest possible case; get it exactly right here before anyone generalizes it.
++ Chloe: Fix anything broken from Fri’s implementation.
++ Hyunmin: Finalize the surface-code / lattice-surgery magic-factory baseline numbers (from literature) you’ll compare against — put them in baselines.py as a simple dict.
