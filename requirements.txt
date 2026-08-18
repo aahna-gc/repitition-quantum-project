@@ -2,7 +2,5 @@ numpy
 pytest
 networkx
 matplotlib
-
-# used by the ConiQ paper for surface-code comparison / decoding baselines
 stim
 pymatching
