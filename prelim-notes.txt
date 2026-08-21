@@ -1,1 +1,26 @@
-notes can go here
+# Preliminary notes
+
+repetition code - most basic error correction code which protects information by repeating it.
+* logical qubit --> multiple qubits, with its value determined through majority ruling.
+* only protects against one type of error at a time (either bit-flip [X] or phase-flip [Z]).
+* number of errors that a repetition code can protect against is (d-1)/2, where d is code distance.
+
+detector - finds parity differences in repetition codes, parity-checker.
+* returns 1 / true if an error is found (parity is different).
+
+threshold - point in which increasing code distance causes the logical error rate to worsen instead of improve.
+* found by plotting the logical error rate vs physical error rate curve for a bunch of distances, and find their intersection.
+* done in stim through Monte Carlo sampling.
+* sinter --> streamlines the Monte Carlo sampling process.
+
+concatenated code - quantum error correction code made by combining two or more simpler codes.
+* uses nested layers, with quantum info being encoded in an inner code that is then encoded in an outer code (e.g. two repetition codes).
+* greatly decreases logical error rate if physical error rates are below a certain threshold.
+* example is 9-qubit shor's code.
+
+surface code - topological quantum error correction code, with qubits typically arranged in a 2D structure.
+* errors are detected with nearest-neighbor logic.
+* errors can rarely corrupt the entire logical state bc info is stored across the entire lattice structure.
+* timeline-3d: 3D visuals of surface codes have time as the third dimension, so each layer is the same surface code at a different point in time.
+* detector slice diagram: shows how stabilizers checked by a circuit's detectors change over time.
+** stabilizers are what check errors without measuring qubits.
