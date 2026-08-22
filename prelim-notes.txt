@@ -5,8 +5,14 @@ repetition code - most basic error correction code which protects information by
 * only protects against one type of error at a time (either bit-flip [X] or phase-flip [Z]).
 * number of errors that a repetition code can protect against is (d-1)/2, where d is code distance.
 
-detector - finds parity differences in repetition codes, parity-checker.
+detector - stim construct that finds parity differences in repetition codes, parity-checker.
 * returns 1 / true if an error is found (parity is different).
+
+ancilla - extra qubit used to extract parity information without measuring the quantum information.
+* if it is used to detect a stabilizer result, the detector should be applied to the ancilla qubit.
+* typically, z0z1 stabilizer calls for CNOTs on the ancilla qubit, where the data qubits are the controls.
+* typically, x0x1 stabilizer calls for CZs on the ancilla qubit, where the ancilla is the control due to phase kickback.
+** ancilla should have a hadamard sandwich.
 
 threshold - point in which increasing code distance causes the logical error rate to worsen instead of improve.
 * found by plotting the logical error rate vs physical error rate curve for a bunch of distances, and find their intersection.
