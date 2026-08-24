@@ -8,6 +8,7 @@ Concatenated quantum error-correcting codes are conventionally decoded using fas
 # tentative timeline
 checkmark for completion: ✓ \
 timeline: \
+**Phase 1: research**
 Tue, Aug 18
 + Aahna: Install Stim; work through the official Stim getting-started tutorial (circuits, detectors, observables) + install requirements.txt ✓
 + Chloe: Install Stim; work through the official Stim getting-started tutorial (circuits, detectors, observables) + install requirements.txt ✓
@@ -27,3 +28,49 @@ Tues, Aug 25:
 + Aahna: Begin ML decoder skeleton: pull detector error model out of a Stim circuit via circuit.detector_error_model(). (make sure to let others know what filenames correlate to what)
 + Chloe: Build the fault-tolerant Shor code memory circuit under a phenomenological noise model in Stim. (make sure to let others know what filenames correlate to what)
 + Hyunmin: Build benchmarking harness scaffolding: experiment config schema, result logging (CSV/JSON), directory conventions. (make sure to let others know what filenames correlate to what)
+
+Wed, Aug 26:
++ Aahna: Implement exact enumeration over syndromes and logical coset classes for the ML decoder.
++ Chloe: Extend the memory circuit to a circuit-level noise model (gate errors, measurement errors, idling errors).
++ Hyunmin: Implement the local hard-decision majority-vote decoder baseline.
+
+Thu, Aug 27:
+**meeting: discuss submission to urtc, meetings with deutch and shantanu, update one another on project progress**
++ Aahna: Unit-test the ML decoder on small, hand-checkable syndrome cases; validate against known Shor code error patterns.
++ Chloe: Sanity-check circuit correctness: verify detector event statistics match expected error-free behavior.
++ Hyunmin: Wire the majority-vote decoder into the pipeline; run first end-to-end baseline experiment.
+
+Fri, Aug 28:
++ Aahna: Optimize the ML decoder for larger shot counts (vectorize the brute-force enumeration where possible).
++ Chloe: Implement physical error-rate (p) sweeps for the phenomenological noise model.
++ Hyunmin: Build Monte Carlo sampling + logical error rate computation infrastructure.
+
+Sat, Aug 29:
++ Aahna: Extend the ML decoder to handle the circuit-level detector error model.
++ Chloe: Implement p sweeps for the circuit-level noise model; cross-check DEM against phenomenological limits.
++ Hyunmin: Run first logical error rate experiments (phenomenological noise, both decoders) as a smoke test.
+
+Sun, Aug 30:
+**meeting day**
++ Aahna: Run larger-scale ML decoding experiments (phenomenological); begin comparing logical failure rate coefficients vs. majority-vote. review Aahna's decoder module, Chloe's circuit module, and Hyunmin's pipeline module in the meeting. 
++ Chloe: Run larger-scale phenomenological experiments across the full p sweep for both decoders. review Aahna's decoder module, Chloe's circuit module, and Hyunmin's pipeline module in the meeting.
++ Hyunmin: Build pseudo-threshold estimation code (curve fitting, threshold crossing point). review Aahna's decoder module, Chloe's circuit module, and Hyunmin's pipeline module in the meeting.
+
+Mon, Aug 31:
++ Aahna: Run larger-scale ML decoding experiments (circuit-level). Draft abstracts to submit to URTC.
++ Chloe: Run circuit-level experiments at scale for both decoders. Draft abstracts to submit to URTC.
++ Hyunmin: Apply pseudo-threshold analysis to both decoders; generate first preliminary comparison plots. Draft abstracts to submit to URTC.
+
+Tue, Sept 1:
+**meeting day**
++ All: discuss drafted abstracts during meeting and work on finalizing and editing them.
++ Aahna: Full experiment run (all): execute the complete phenomenological + circuit-level, ML + majority-vote experiment matrix; collect the dataset for the August milestone.
++ Chloe: Full experiment run (all): same — focus on verifying circuit-level data quality and re-running any noisy configurations.
++ Hyunmin: Full experiment run (all): same — aggregate results into the shared dataset; start drafting a results-summary memo.
+
+Wed, Sept 2:
++ Aahna: Make final edits to abstracts. Check in w/ Chloe on submission status. Code freeze: Finalize decoder module, docstrings, and inline comments.
++ Chloe: Make final edits to abstracts. Submit to URTC portal. Code freeze: finalize circuit-construction module, docstrings, and inline comments.
++ Hyunmin: Make final edits to abstracts. Check in w/ Chloe on submission status. Code freeze: clean up repo, write README, package for open-source release, tag a v0.1 checkpoint.
+
+**Phase 2: writing**
