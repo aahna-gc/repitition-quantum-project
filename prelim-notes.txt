@@ -22,7 +22,24 @@ threshold - point in which increasing code distance causes the logical error rat
 concatenated code - quantum error correction code made by combining two or more simpler codes.
 * uses nested layers, with quantum info being encoded in an inner code that is then encoded in an outer code (e.g. two repetition codes).
 * greatly decreases logical error rate if physical error rates are below a certain threshold.
-* example is 9-qubit shor's code.
+* example is 9-qubit shor code.
+
+nine-qubit shor code - QEC code which encodes a logical qubit in nine physical qubits, allowing for simultaneous correction of both bit-flip or phase-flip errors.
+* starts by encoding the state |0> as |+++> and the state |1> as |--->, creating the first layer of logical qubits.
+** encoded by applying CNOTs to the qubits with the first qubit as the control, then hadamards on all three qubits to encode for bit flip errors.
+* encodes three of the first layer logical qubits as a second layer logical qubit, with |0L> = 1/2 root 2 (|000> + |111>) x (|000> + |111>) x (|000> + |111>) and |1L> = 1/2 root 2 (|000> - |111>) x (|000> - |111>) x (|000> - (111>)
+** encoded by applying CNOTs to the three qubits with the first qubit as the control to encode for phase flip errors (phase kickback).
+* logical gates -> ZL = X X X X X X X X X
+                   XL = Z Z Z Z Z Z Z Z Z
+* 8 stabilizer generators: 6 for bit flips, 2 for phase flips.
+** g1 = Z Z I I I I I I I
+** g2 = I Z Z I I I I I I
+** g3 = I I I Z Z I I I I
+** g4 = I I I I Z Z I I I
+** g5 = I I I I I I Z Z I
+** g6 = I I I I I I I Z Z
+** g7 = X X X X X X I I I
+** g8 = I I I X X X X X X
 
 surface code - topological quantum error correction code, with qubits typically arranged in a 2D structure.
 * errors are detected with nearest-neighbor logic.
