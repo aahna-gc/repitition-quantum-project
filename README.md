@@ -8,5 +8,5 @@ Tue, Aug 18
 
 Sun, Aug 23:
 + Aahna: Read up on Maximum Likelihood decoding theory for stabilizer codes — logical cosets, partition functions, degenerate error classes. ✓ Also: schedule emails to Deutsch and Shantanu
-+ Chloe: Study the Shor [[9,1,3]] code in depth: stabilizer generators, encoding circuit, X/Z error correction structure.
++ Chloe: Study the Shor [[9,1,3]] code in depth: stabilizer generators, encoding circuit, X/Z error correction structure. ✓
 + Hyunmin: Read Stim docs on phenomenological vs. circuit-level noise models; survey how Stim's built-in decoders (pymatching) work as a reference point.
