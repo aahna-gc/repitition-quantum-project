@@ -8,7 +8,7 @@ Concatenated quantum error-correcting codes are conventionally decoded using fas
 # tentative timeline
 checkmark for completion: ✓ \
 timeline: \
-**Phase 1: research**
+**Phase 1: research** \
 Tue, Aug 18
 + Aahna: Install Stim; work through the official Stim getting-started tutorial (circuits, detectors, observables) + install requirements.txt ✓
 + Chloe: Install Stim; work through the official Stim getting-started tutorial (circuits, detectors, observables) + install requirements.txt ✓
