@@ -32,14 +32,16 @@ nine-qubit shor code - QEC code which encodes a logical qubit in nine physical q
 * logical gates -> ZL = X X X X X X X X X
                    XL = Z Z Z Z Z Z Z Z Z
 * 8 stabilizer generators: 6 for bit flips, 2 for phase flips.
-** g1 = Z Z I I I I I I I
-** g2 = I Z Z I I I I I I
-** g3 = I I I Z Z I I I I
-** g4 = I I I I Z Z I I I
-** g5 = I I I I I I Z Z I
-** g6 = I I I I I I I Z Z
-** g7 = X X X X X X I I I
-** g8 = I I I X X X X X X
+** g1 = Z Z I I I I I I I (z0z1)
+** g2 = I Z Z I I I I I I (z1z2)
+** g3 = I I I Z Z I I I I (z4z5)
+** g4 = I I I I Z Z I I I (z5z6)
+** g5 = I I I I I I Z Z I (z7z8)
+** g6 = I I I I I I I Z Z (z8z9)
+** g7 = X X X X X X I I I (x1x2x3x4x5x6)
+** g8 = I I I X X X X X X (x4x5x6x7x8x9)
+* z-stabilizers (bit flips) are encoded through CNOTs.
+* x-stabilizers (phase flips) are encoded by hadamard-sandwiching CNOTs. 
 
 surface code - topological quantum error correction code, with qubits typically arranged in a 2D structure.
 * errors are detected with nearest-neighbor logic.
@@ -47,3 +49,7 @@ surface code - topological quantum error correction code, with qubits typically 
 * timeline-3d: 3D visuals of surface codes have time as the third dimension, so each layer is the same surface code at a different point in time.
 * detector slice diagram: shows how stabilizers checked by a circuit's detectors change over time.
 ** stabilizers are what check errors without measuring qubits.
+
+stim notes:
+* ticks go at the end of every major operation, such as a measurement.
+* detectors go after measurements, with rec[-1] being the most recent measurement, rec[-2] being the second most recent, and etc.
