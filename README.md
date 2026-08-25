@@ -21,7 +21,7 @@ Sun, Aug 23:
 
 Mon, Aug 24:
 + Aahna: Sketch pseudocode for a brute-force ML decoder: enumerate all logical cosets, sum error probabilities exactly from the detector error model. ✓
-+ Chloe: Prototype a minimal (unencoded) Stim circuit for the Shor code to get comfortable with circuit syntax before fault-tolerant version.
++ Chloe: Prototype a minimal (unencoded) Stim circuit for the Shor code to get comfortable with circuit syntax before fault-tolerant version. ✓
 + Hyunmin: Investigate literature on local hard-decision majority-vote decoders for concatenated codes; note what “information loss” means at each layer.
 
 Tues, Aug 25:
