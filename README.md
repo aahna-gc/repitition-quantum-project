@@ -30,7 +30,7 @@ Tues, Aug 25:
 + Hyunmin: Build benchmarking harness scaffolding: experiment config schema, result logging (CSV/JSON), directory conventions. (make sure to let others know what filenames correlate to what)
 
 Wed, Aug 26:
-+ Aahna: Implement exact enumeration over syndromes and logical coset classes for the ML decoder.
++ Aahna: Implement exact enumeration over syndromes and logical coset classes for the ML decoder. ✓
 + Chloe: Extend the memory circuit to a circuit-level noise model (gate errors, measurement errors, idling errors).
 + Hyunmin: Implement the local hard-decision majority-vote decoder baseline.
 
