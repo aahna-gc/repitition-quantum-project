@@ -1,0 +1,50 @@
+# Brute-Force ML Decoder pseudocode sketch
+
+## GOAL:
+Given a detector error model (DEM) + one observed shot's fired detectors,
+the goal is to find the logical class with the greatest total probability mass, summed
+exactly over every error mechanism combination consistent with that shot.
+
+## INPUTS:
+- `DEM`: list of independent error mechanisms `e_1 ... e_k`, each with
+  - `p_i`               : probability the mechanism fires
+  - `detector_pattern(e_i)` : bitstring: which detectors it flips
+  - `logical_flip(e_i)`     : bitstring: which logical observables it flips
+- `observed_detectors` : the fired-detector bitstring from one real shot
+
+## OUTPUT:
+- `predicted_logical` : decoder's best-guess logical outcome
+
+## Pseudocode
+
+```
+function BRUTE_FORCE_ML_DECODE(DEM, observed_detectors):
+
+    coset_mass = empty map from logical_class -> probability_mass  # init to 0
+
+    for each subset S of {e_1, ..., e_k}:            # 2^k subsets
+
+        prob(S) = 1.0
+        for e_i in DEM:
+            if e_i in S:
+                prob(S) *= p_i
+            else:
+                prob(S) *= (1 - p_i)
+
+        detector_result(S) = XOR over e_i in S of detector_pattern(e_i)
+
+        if detector_result(S) != observed_detectors:
+            continue                                  # inconsistent w/ shot
+
+        logical_result(S) = XOR over e_i in S of logical_flip(e_i)
+        coset_mass[logical_result(S)] += prob(S)
+
+    predicted_logical = argmax_L coset_mass[L]
+    return predicted_logical
+```
+
+## COMPLEXITY:
+- `O(2^k)` subsets, `O(k)` work each → `O(k · 2^k)` per shot
+- Exponential in **number of error mechanisms**, not qubit count directly,
+  which is why ML doesn't scale and why hard-decision/level-by-level
+  decoding is used in practice
