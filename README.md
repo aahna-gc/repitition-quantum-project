@@ -15,7 +15,7 @@ Tue, Aug 18
 + Hyunmin: Install Stim; work through the official Stim getting-started tutorial (circuits, detectors, observables) + install requirements.txt ✓
 
 Sun, Aug 23:
-+ Aahna: Read up on Maximum Likelihood decoding theory for stabilizer codes — logical cosets, partition functions, degenerate error classes. ✓ Also: schedule emails to Deutsch and Shantanu
++ Aahna: Read up on Maximum Likelihood decoding theory for stabilizer codes — logical cosets, partition functions, degenerate error classes. ✓ 
 + Chloe: Study the Shor [[9,1,3]] code in depth: stabilizer generators, encoding circuit, X/Z error correction structure. ✓
 + Hyunmin: Read Stim docs on phenomenological vs. circuit-level noise models; survey how Stim's built-in decoders (pymatching) work as a reference point.
 
@@ -36,7 +36,7 @@ Wed, Aug 26:
 
 Thu, Aug 27:
 **meeting: discuss submission to urtc, meetings with deutch and shantanu, update one another on project progress**
-+ Aahna: Unit-test the ML decoder on small, hand-checkable syndrome cases; validate against known Shor code error patterns.
++ Aahna: Unit-test the ML decoder on small, hand-checkable syndrome cases; validate against known Shor code error patterns. Also: schedule emails to Deutsch and Shantanu
 + Chloe: Sanity-check circuit correctness: verify detector event statistics match expected error-free behavior.
 + Hyunmin: Wire the majority-vote decoder into the pipeline; run first end-to-end baseline experiment.
 
