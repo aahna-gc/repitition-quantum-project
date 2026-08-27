@@ -25,7 +25,7 @@ Mon, Aug 24:
 + Hyunmin: Investigate literature on local hard-decision majority-vote decoders for concatenated codes; note what “information loss” means at each layer.
 
 Tues, Aug 25:
-+ Aahna: Begin ML decoder skeleton: pull detector error model out of a Stim circuit via circuit.detector_error_model(). (make sure to let others know what filenames correlate to what)
++ Aahna: Begin ML decoder skeleton: pull detector error model out of a Stim circuit via circuit.detector_error_model(). (make sure to let others know what filenames correlate to what) ✓
 + Chloe: Build the fault-tolerant Shor code memory circuit under a phenomenological noise model in Stim. (make sure to let others know what filenames correlate to what) ✓
 + Hyunmin: Build benchmarking harness scaffolding: experiment config schema, result logging (CSV/JSON), directory conventions. (make sure to let others know what filenames correlate to what)
 
