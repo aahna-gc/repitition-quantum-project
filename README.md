@@ -31,13 +31,13 @@ Tues, Aug 25:
 
 Wed, Aug 26:
 + Aahna: Implement exact enumeration over syndromes and logical coset classes for the ML decoder. ✓
-+ Chloe: Extend the memory circuit to a circuit-level noise model (gate errors, measurement errors, idling errors).
++ Chloe: Extend the memory circuit to a circuit-level noise model (gate errors, measurement errors, idling errors). ✓
 + Hyunmin: Implement the local hard-decision majority-vote decoder baseline.
 
 Thu, Aug 27:
 **meeting: discuss submission to urtc, meetings with deutch and shantanu, update one another on project progress**
 + Aahna: Unit-test the ML decoder on small, hand-checkable syndrome cases; validate against known Shor code error patterns. Also: schedule emails to Deutsch and Shantanu
-+ Chloe: Sanity-check circuit correctness: verify detector event statistics match expected error-free behavior.
++ Chloe: Sanity-check circuit correctness: verify detector event statistics match expected error-free behavior. ✓
 + Hyunmin: Wire the majority-vote decoder into the pipeline; run first end-to-end baseline experiment.
 
 Fri, Aug 28:
