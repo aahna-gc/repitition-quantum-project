@@ -27,7 +27,7 @@ Mon, Aug 24:
 Tues, Aug 25:
 + Aahna: Begin ML decoder skeleton: pull detector error model out of a Stim circuit via circuit.detector_error_model(). (make sure to let others know what filenames correlate to what) ✓
 + Chloe: Build the fault-tolerant Shor code memory circuit under a phenomenological noise model in Stim. (make sure to let others know what filenames correlate to what) ✓
-+ Hyunmin: Build benchmarking harness scaffolding: experiment config schema, result logging (CSV/JSON), directory conventions. (make sure to let others know what filenames correlate to what)
++ Hyunmin: Build benchmarking harness scaffolding: experiment config schema, result logging (CSV/JSON), directory conventions. (make sure to let others know what filenames correlate to what) ✓
 
 Wed, Aug 26:
 + Aahna: Implement exact enumeration over syndromes and logical coset classes for the ML decoder. ✓
