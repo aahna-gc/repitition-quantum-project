@@ -42,12 +42,12 @@ Thu, Aug 27:
 
 Fri, Aug 28:
 + Aahna: Optimize the ML decoder for larger shot counts (vectorize the brute-force enumeration where possible).
-+ Chloe: Implement physical error-rate (p) sweeps for the phenomenological noise model.
++ Chloe: Implement physical error-rate (p) sweeps for the phenomenological noise model. ✓
 + Hyunmin: Build Monte Carlo sampling + logical error rate computation infrastructure.
 
 Sat, Aug 29:
 + Aahna: Extend the ML decoder to handle the circuit-level detector error model.
-+ Chloe: Implement p sweeps for the circuit-level noise model; cross-check DEM against phenomenological limits.
++ Chloe: Implement p sweeps for the circuit-level noise model; cross-check DEM against phenomenological limits. ✓
 + Hyunmin: Run first logical error rate experiments (phenomenological noise, both decoders) as a smoke test.
 
 Sun, Aug 30:
