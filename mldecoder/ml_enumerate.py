@@ -1,9 +1,16 @@
+# ----------
+# if you are not sure what folder you're in:
+# run this command!
+# cd ~/Documents/GitHub/repitition-quantum-project/mldecoder && python ml_enumerate.py
+# you're welcome
+# ___________
+
+
 from collections import defaultdict
-from itertools import product
+import numpy as np
 
 
 def enumerate_ml_table(mechanisms, verbose=False):
-
     k = len(mechanisms)
     if k > 24:
         raise ValueError(
@@ -12,35 +19,84 @@ def enumerate_ml_table(mechanisms, verbose=False):
             "9-mechanism Shor-code bit-flip sector)."
         )
 
-    # (syndrome, logical_class) -> accumulated probability mass
-    coset_mass = defaultdict(lambda: defaultdict(float))
+    # bit-pack each mechanism's detector/observable pattern into an
+    # integer mask so the enumeration can run as numpy array ops
+    det_masks = np.array(
+        [sum(1 << d for d in dets) for _, dets, _ in mechanisms], dtype=np.uint64
+    )
+    obs_masks = np.array(
+        [sum(1 << o for o in obs) for _, _, obs in mechanisms], dtype=np.uint64
+    )
+    probs = np.array([p for p, _, _ in mechanisms], dtype=np.float64)
 
-    for bits in product((0, 1), repeat=k):
-        prob = 1.0
-        detector_acc = frozenset()
-        logical_acc = frozenset()
+    # doubling construction ---> grow the off and on branches for each
+    # mechanism in turn, vectorized across all subsets built so far,
+    # instead of recomputing every subset from scratch in a loop (bc that would suck)
+    syndromes = np.zeros(1, dtype=np.uint64)
+    logicals = np.zeros(1, dtype=np.uint64)
+    weights = np.ones(1, dtype=np.float64)
 
-        for on, (p, dets, obs) in zip(bits, mechanisms):
-            if on:
-                prob *= p
-                # XOR: symmetric difference toggles which detectors/
-                # observables are currently flipped as mechanisms combine
-                detector_acc = detector_acc.symmetric_difference(dets)
-                logical_acc = logical_acc.symmetric_difference(obs)
-            else:
-                prob *= (1.0 - p)
+    for i in range(k):
+        p = probs[i]
+        weights_off = weights * (1.0 - p)
+        weights_on = weights * p
+        syndromes_on = syndromes ^ det_masks[i]
+        logicals_on = logicals ^ obs_masks[i]
 
-        coset_mass[detector_acc][logical_acc] += prob
+        syndromes = np.concatenate([syndromes, syndromes_on])
+        logicals = np.concatenate([logicals, logicals_on])
+        weights = np.concatenate([weights_off, weights_on])
 
-    # argmax over logical classes, per syndrome
+    # group by (syndrome, logical) pair and sum probability mass
+    # combined integer key + np.unique/np.bincount instead of a Python
+    # dict-of-dicts accumulator
+    logical_bits = max(int(logicals.max()).bit_length() if logicals.size else 0, 1)
+    combined = (syndromes << np.uint64(logical_bits)) | logicals
+
+    unique_keys, inverse = np.unique(combined, return_inverse=True)
+    mass = np.bincount(inverse, weights=weights)
+
+    unique_logicals = (unique_keys & np.uint64((1 << logical_bits) - 1)).astype(np.int64)
+    unique_syndromes = (unique_keys >> np.uint64(logical_bits)).astype(np.int64)
+
+    # argmax logical class per syndrome
+    order = np.argsort(unique_syndromes, kind="stable")
+    sorted_syn = unique_syndromes[order]
+    sorted_log = unique_logicals[order]
+    sorted_mass = mass[order]
+
+    def mask_to_frozenset(mask):
+        return frozenset(i for i in range(mask.bit_length()) if mask & (1 << i))
+
+    # collect all (logical, mass) pairs per syndrome for verbose printing,
+    # matching the original's per-syndrome debug output
+    per_syndrome_classes = defaultdict(dict) if verbose else None
+
     ml_table = {}
-    for syndrome, classes in coset_mass.items():
-        best_class = max(classes.items(), key=lambda kv: kv[1])[0]
-        ml_table[syndrome] = best_class
+    i, n = 0, len(sorted_syn)
+    while i < n:
+        j = i
+        best_mass, best_logical = -1.0, 0
+        cur_syn = int(sorted_syn[i])
+        while j < n and sorted_syn[j] == cur_syn:
+            logical_val = int(sorted_log[j])
+            mass_val = float(sorted_mass[j])
+            if verbose:
+                per_syndrome_classes[cur_syn][logical_val] = mass_val
+            if mass_val > best_mass:
+                best_mass, best_logical = mass_val, logical_val
+            j += 1
+        syndrome_fs = mask_to_frozenset(cur_syn)
+        best_class_fs = mask_to_frozenset(best_logical)
+        ml_table[syndrome_fs] = best_class_fs
         if verbose:
-            print(f"syndrome={sorted(syndrome)}: "
-                  f"{ {tuple(sorted(c)): round(m, 6) for c, m in classes.items()} } "
-                  f"-> predicted {sorted(best_class)}")
+            classes_display = {
+                tuple(sorted(mask_to_frozenset(lg))): round(m, 6)
+                for lg, m in per_syndrome_classes[cur_syn].items()
+            }
+            print(f"syndrome={sorted(syndrome_fs)}: {classes_display} "
+                  f"-> predicted {sorted(best_class_fs)}")
+        i = j
 
     return ml_table
 
@@ -51,10 +107,11 @@ def decode(observed_detectors, ml_table, default=frozenset()):
 
 
 if __name__ == "__main__":
-    # Smoke test using the ACTUAL 9 mechanisms captured from
+    # Smoke test using the actual 9 mechanisms captured from
     # decoder.py run against the distance-3 repetition-code circuit
-    # (detectors: 4, observables: 1). this is reusing real output rather than
-    # re-deriving synthetic numbers, so this exercises the real DEM shape
+    # (detectors: 4, observables: 1).
+    # this is reusing real output rather than
+    # re-deriving synthetic numbers --> real DEM shape
     mechanisms = [
         (0.01352, frozenset({0}),    frozenset()),
         (0.01352, frozenset({0, 1}), frozenset()),
