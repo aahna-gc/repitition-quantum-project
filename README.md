@@ -35,8 +35,8 @@ Wed, Aug 26:
 + Hyunmin: Implement the local hard-decision majority-vote decoder baseline.
 
 Thu, Aug 27:
-**meeting: discuss submission to urtc, meetings with deutch and shantanu, update one another on project progress**
-+ Aahna: Unit-test the ML decoder on small, hand-checkable syndrome cases; validate against known Shor code error patterns. Also: schedule emails to Deutsch and Shantanu
+**meeting: discuss submission to urtc, meetings with deutch and shantanu, update one another on project progress** ✓
++ Aahna: Unit-test the ML decoder on small, hand-checkable syndrome cases; validate against known Shor code error patterns. Also: schedule emails to Deutsch and Shantanu ✓
 + Chloe: Sanity-check circuit correctness: verify detector event statistics match expected error-free behavior. ✓
 + Hyunmin: Wire the majority-vote decoder into the pipeline; run first end-to-end baseline experiment.
 
@@ -51,7 +51,7 @@ Sat, Aug 29:
 + Hyunmin: Run first logical error rate experiments (phenomenological noise, both decoders) as a smoke test.
 
 Sun, Aug 30:
-**meeting day**
+**meeting day** ✓
 + Aahna: Run larger-scale ML decoding experiments (phenomenological); begin comparing logical failure rate coefficients vs. majority-vote. review Aahna's decoder module, Chloe's circuit module, and Hyunmin's pipeline module in the meeting. 
 + Chloe: Run larger-scale phenomenological experiments across the full p sweep for both decoders. review Aahna's decoder module, Chloe's circuit module, and Hyunmin's pipeline module in the meeting.
 + Hyunmin: Build pseudo-threshold estimation code (curve fitting, threshold crossing point). review Aahna's decoder module, Chloe's circuit module, and Hyunmin's pipeline module in the meeting.
@@ -62,7 +62,7 @@ Mon, Aug 31:
 + Hyunmin: Apply pseudo-threshold analysis to both decoders; generate first preliminary comparison plots. Draft abstracts to submit to URTC.
 
 Tue, Sept 1:
-**meeting day**
+**meeting day: submit abstract** 
 + All: discuss drafted abstracts during meeting and work on finalizing and editing them.
 + Aahna: Full experiment run (all): execute the complete phenomenological + circuit-level, ML + majority-vote experiment matrix; collect the dataset for the August milestone.
 + Chloe: Full experiment run (all): same — focus on verifying circuit-level data quality and re-running any noisy configurations.
