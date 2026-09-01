@@ -36,7 +36,7 @@ Wed, Aug 26:
 
 Thu, Aug 27:
 **meeting: discuss submission to urtc, meetings with deutch and shantanu, update one another on project progress** ✓
-+ Aahna: Unit-test the ML decoder on small, hand-checkable syndrome cases; validate against known Shor code error patterns. Also: schedule emails to Deutsch and Shantanu ✓
++ Aahna: Unit-test the ML decoder on small, hand-checkable syndrome cases; validate against known Shor code error patterns. ✓ Also: schedule emails to Deutsch and Shantanu ✓
 + Chloe: Sanity-check circuit correctness: verify detector event statistics match expected error-free behavior. ✓
 + Hyunmin: Wire the majority-vote decoder into the pipeline; run first end-to-end baseline experiment.
 
