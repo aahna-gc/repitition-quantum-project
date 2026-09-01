@@ -57,7 +57,7 @@ Sun, Aug 30:
 + Hyunmin: Build pseudo-threshold estimation code (curve fitting, threshold crossing point). review Aahna's decoder module, Chloe's circuit module, and Hyunmin's pipeline module in the meeting.
 
 Mon, Aug 31:
-+ Aahna: Run larger-scale ML decoding experiments (circuit-level). Draft abstracts to submit to URTC.
++ Aahna: Run larger-scale ML decoding experiments (circuit-level). (Seperate check mark:) Draft abstracts to submit to URTC. ✓
 + Chloe: Run circuit-level experiments at scale for both decoders. Draft abstracts to submit to URTC.
 + Hyunmin: Apply pseudo-threshold analysis to both decoders; generate first preliminary comparison plots. Draft abstracts to submit to URTC.
 
