@@ -36,12 +36,12 @@ Wed, Aug 26:
 
 Thu, Aug 27:
 **meeting: discuss submission to urtc, meetings with deutch and shantanu, update one another on project progress** ✓
-+ Aahna: Unit-test the ML decoder on small, hand-checkable syndrome cases; validate against known Shor code error patterns. Also: schedule emails to Deutsch and Shantanu ✓
++ Aahna: Unit-test the ML decoder on small, hand-checkable syndrome cases; validate against known Shor code error patterns. ✓ Also: schedule emails to Deutsch and Shantanu ✓
 + Chloe: Sanity-check circuit correctness: verify detector event statistics match expected error-free behavior. ✓
 + Hyunmin: Wire the majority-vote decoder into the pipeline; run first end-to-end baseline experiment.
 
 Fri, Aug 28:
-+ Aahna: Optimize the ML decoder for larger shot counts (vectorize the brute-force enumeration where possible).
++ Aahna: Optimize the ML decoder for larger shot counts (vectorize the brute-force enumeration where possible). ✓
 + Chloe: Implement physical error-rate (p) sweeps for the phenomenological noise model. ✓
 + Hyunmin: Build Monte Carlo sampling + logical error rate computation infrastructure.
 
@@ -57,7 +57,7 @@ Sun, Aug 30:
 + Hyunmin: Build pseudo-threshold estimation code (curve fitting, threshold crossing point). review Aahna's decoder module, Chloe's circuit module, and Hyunmin's pipeline module in the meeting.
 
 Mon, Aug 31:
-+ Aahna: Run larger-scale ML decoding experiments (circuit-level). Draft abstracts to submit to URTC.
++ Aahna: Run larger-scale ML decoding experiments (circuit-level). (Seperate check mark:) Draft abstracts to submit to URTC. ✓
 + Chloe: Run circuit-level experiments at scale for both decoders. Draft abstracts to submit to URTC.
 + Hyunmin: Apply pseudo-threshold analysis to both decoders; generate first preliminary comparison plots. Draft abstracts to submit to URTC.
 

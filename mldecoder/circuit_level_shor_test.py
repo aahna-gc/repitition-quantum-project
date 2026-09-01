@@ -81,11 +81,8 @@ def test_ml_table_builds_without_crashing_on_real_circuit():
     )
 )
 def test_known_single_qubit_error_does_not_flip_logical():
-    """Once a logical observable exists: inject a single data-qubit error
+    """NOTE NOTE NOTE READ THIS: Once a logical observable exists: inject a single data-qubit error
     (e.g. via an explicit X on qubit 0 before the first round, or by
     checking mechanisms with weight-1 support) and confirm the ML
-    decoder's predicted logical class matches 'no logical flip' -- the
-    same hand-checkable property test_shor_decoder.py already validates
-    against the simplified hand-built model, now needed against the real
-    circuit."""
+    decoder's predicted logical class matches 'no logical flip'"""
     pytest.skip("see BLOCKED reason above")
