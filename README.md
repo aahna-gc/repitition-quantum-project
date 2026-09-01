@@ -41,7 +41,7 @@ Thu, Aug 27:
 + Hyunmin: Wire the majority-vote decoder into the pipeline; run first end-to-end baseline experiment.
 
 Fri, Aug 28:
-+ Aahna: Optimize the ML decoder for larger shot counts (vectorize the brute-force enumeration where possible).
++ Aahna: Optimize the ML decoder for larger shot counts (vectorize the brute-force enumeration where possible). ✓
 + Chloe: Implement physical error-rate (p) sweeps for the phenomenological noise model. ✓
 + Hyunmin: Build Monte Carlo sampling + logical error rate computation infrastructure.
 
