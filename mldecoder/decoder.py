@@ -1,3 +1,5 @@
+# you won't need to be running this code on its own so no command here. run ml_enumerate to test this ML decoder.
+
 import stim
 from ml_enumerate import enumerate_ml_table, decode
  #hi lol 
