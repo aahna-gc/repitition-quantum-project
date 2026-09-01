@@ -125,7 +125,8 @@ def circuit_level_shor(p_gate, p_idle, p_measure, rounds):
     for runs in range(rounds):
         circuit_round(circuit, p_gate, p_idle, p_measure, first_round=(runs==0))
     
-    # Measure all data qubits and return final detector readout
+    # Measure all data qubits and return final logical readout
     circuit.append("M", range(9))
+    # Logical Z_L: Z0Z3Z6
     circuit.append("OBSERVABLE_INCLUDE",[stim.target_rec(-9), stim.target_rec(-6), stim.target_rec(-3)], 0)
     return circuit
