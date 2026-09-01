@@ -1,7 +1,8 @@
 # ----------
 # if you are not sure what folder you're in:
-# run this command!
+# run this command to run this decoder!
 # cd ~/Documents/GitHub/repitition-quantum-project/mldecoder && python ml_enumerate.py
+# you may need this since the shor circuit is in a different folder than this decoder.
 # you're welcome
 # ___________
 
