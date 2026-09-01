@@ -1,4 +1,5 @@
 import stim
+from ml_enumerate import enumerate_ml_table, decode
  #hi lol 
  
 def get_dem(circuit: "stim.Circuit", decompose_errors: bool = True):
@@ -53,6 +54,9 @@ if __name__ == "__main__":
  
     dem = get_dem(circuit, decompose_errors=False)
     mechanisms = parse_dem(dem)
+
+    ml_table = enumerate_ml_table(mechanisms)
+    print(f"\nbuilt table over {len(ml_table)} distinct syndromes")
  
     n_det, n_obs = num_detectors_and_observables(dem)
     print(f"detectors: {n_det}, observables: {n_obs}")
