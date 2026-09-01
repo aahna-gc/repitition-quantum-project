@@ -97,4 +97,8 @@ def pheno_noise_shor(p_pheno, rounds):
     # Run repeated QEC rounds
     for runs in range(rounds):
         pheno_round(circuit, p_pheno, first_round=(runs==0))
+
+    # Measure all data qubits and return final detector readout
+    circuit.append("M", range(9))
+    circuit.append("OBSERVABLE_INCLUDE",[stim.target_rec(-9), stim.target_rec(-6), stim.target_rec(-3)], 0)
     return circuit
