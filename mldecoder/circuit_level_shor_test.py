@@ -1,7 +1,30 @@
+
+# ________________________
+# HI PLEASE READ
+# DO NOT MISS THIS
+# PLS READ THIS
+# !!!!!!!!!!!!!!!!!!!!
+# **TO RUN THIS: put the following in terminal:**
+# cd .. 
+# cd repitition-quantum-project
+# python -m pytest mldecoder/circuit_level_shor_test.py -v
+# ****RUN EACH LINE SEPERATELY TO RUN THE TESTS,
+# this is just because the shor circuit is in a different folder than this test.
+# !!!!!!!!!!!
+# __________________________
+
+
 # ---------------------------------------------------------------------
 # Group 1 pipeline compatibility and hand-derivable structure
 # ---------------------------------------------------------------------
- 
+
+
+import pytest
+from shor_code.circuit_level_code import circuit_level_shor
+from decoder import get_dem, parse_dem
+from ml_enumerate import enumerate_ml_table
+
+
 def test_zero_noise_has_no_error_mechanisms():
     circuit = circuit_level_shor(p_gate=0.0, p_idle=0.0, p_measure=0.0, rounds=1)
     dem = get_dem(circuit, decompose_errors=False)
