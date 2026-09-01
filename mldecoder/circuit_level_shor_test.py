@@ -4,7 +4,7 @@
 # DO NOT MISS THIS
 # PLS READ THIS
 # !!!!!!!!!!!!!!!!!!!!
-# **TO RUN THIS: put the following in terminal:**
+# **TO RUN THIS: put the following in terminal after environment has been activated etc:**
 # cd .. 
 # cd repitition-quantum-project
 # python -m pytest mldecoder/circuit_level_shor_test.py -v
