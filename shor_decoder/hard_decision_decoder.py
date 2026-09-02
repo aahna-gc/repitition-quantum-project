@@ -27,6 +27,10 @@ from typing import List, Optional, Sequence, Tuple
 
 from shor9_code import BLOCKS, HZ_PAIRS, HX_GROUPS, NUM_QUBITS
 
+
+from shor_code.circuit_level_code import circuit_level_shor, circuit_round
+
+
 # Syndrome (bit0, bit1) -> index of the flipped symbol within its group of 3,
 # or None if the syndrome says "no error". Derived directly from HZ_PAIRS'
 # convention (bit0 = parity(sym0, sym1), bit1 = parity(sym1, sym2)):
