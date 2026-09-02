@@ -124,7 +124,8 @@ def circuit_level_shor(p_gate, p_idle, p_measure, rounds):
     # Run multiple QEC rounds
     for runs in range(rounds):
         circuit_round(circuit, p_gate, p_idle, p_measure, first_round=(runs==0))
-    
+
+    # Measure all data qubits and return final logical readout
     circuit.append("H", [0, 1, 2])
     circuit.append("M", range(9))
     circuit.append("OBSERVABLE_INCLUDE",
