@@ -17,19 +17,6 @@ _REP3_LOOKUP = {
 
 
 def decode_single_shot_stim(dets: Sequence[int]) -> int:
-    """Decodes a single shot of Stim detector events (8 detectors per round)
-
-    using level-by-level hard-decision majority voting.
-
-    Chloe's circuit detector ordering per round:
-      - dets[0:2]: Block 0 Z-stabilizers -> inner repetition code 0
-      - dets[2:4]: Block 1 Z-stabilizers -> inner repetition code 1
-      - dets[4:6]: Block 2 Z-stabilizers -> inner repetition code 2
-      - dets[6:8]: Outer X-stabilizers   -> outer repetition code across blocks
-
-    Returns:
-        Predicted logical observable flip (0 or 1).
-    """
     # Use the final round of syndrome detectors (or the 8 detectors if rounds=1)
     # For multi-round, we look at the last round's differential syndrome
     last_round_dets = dets[-8:]
@@ -66,15 +53,6 @@ def decode_single_shot_stim(dets: Sequence[int]) -> int:
 def hard_decision_decode(
     detector_samples: np.ndarray, p: float | None = None
 ) -> np.ndarray:
-    """Batch decoder entry point compatible with Monte Carlo pipeline and Stim samplers.
-
-    Args:
-        detector_samples: Binary 2D numpy array of shape (num_shots, num_detectors).
-        p: Physical error rate (accepted for interface compatibility with ML decoder).
-
-    Returns:
-        Binary 2D numpy array of shape (num_shots, 1) containing predicted logical flips.
-    """
     num_shots = detector_samples.shape[0]
     predictions = np.zeros((num_shots, 1), dtype=np.uint8)
 
